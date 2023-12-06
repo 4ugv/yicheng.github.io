@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>壹橙首页</title>
+		<link rel="stylesheet" href="css/首页.css" />
+		<style>
+			.back{
+				width: 100%;
+				height:100%;
+			}
+			.back img{
+				width: 100%;
+				height: 100%;
+				margin: auto;
+				line-height: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="back">
+			<img src="img/汽车.gif"/>
+		</div>
+		<div class="nav_div">
+			<div class="d-center">
+				<div class="navL">
+					壹橙欢迎您！
+					<a href="js/登录.html" style="color: blue;">请登录</a>
+					<a href="js/注册页面1.html" class="style-red"  style="color: red;">免费注册</a>
+				</div>
+				<div class="navR">
+					<ul>
+						<li><a href="#">我的订单</a></li>
+						<li><a href="用户中心.html">我的壹橙</a></li>
+						<li><a href="#">壹橙会员</a></li>
+						<li><a href="#">企业采购</a></li>
+						<li><a href="#">关注壹橙</a></li>
+						<li><a href="意见反馈/js/反馈.html">反馈中心</span></a></li>
+						<li><a class="style-border-none" href="#">网站导航</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="head d-center">
+			<div class="logo">
+				<img src="img/logo111.jpg" width="100%" height="100%" />
+			</div>
+			<div class="head-search">
+				<input type="text" placeholder="请输入商品..." />
+				<button>搜索</button>
+				<ul>
+					<li><a class="style-red" href="#">优惠购首发</a></li>
+					<li><a href="#">特价优惠</a></li>
+					<li><a href="#">优惠团购</a></li>
+					<li><a href="#">满99减30</a></li>
+					<li><a href="#">日常用品</a></li>
+					<li><a href="#">饮料</a></li>
+					<li><a href="#">奶制品</a></li>
+				</ul>
+			</div>
+			<div class="shopCar">
+				<span class="car"><img src="img/购物车.png" width="27px" height="27px" /></span>
+				<span><a href="购物车.html">我的购物车</a></span>
+			</div>
+		</div>
+
+		<div class="bos">
+			<div class="div-carousel">
+				<div class="imglist">
+					<div class="div-carousel-item" style="opacity: 0"><a href=""><img src="img/轮播图 (3).jpg"
+								height="641px"></a></div>
+					<div class="div-carousel-item" style="opacity: 0"><a href=""><img src="img/轮播图 (4).jpg"
+								height="641px"></a></div>
+					<div class="div-carousel-item" style="opacity: 0"><a href=""><img src="img/轮播图 (2).jpg"
+								height="641px"></a></div>
+					<div class="div-carousel-item" style="opacity: 0"><a href=""><img src="img/轮播图 (1).jpg"
+								height="641px"></a></div>
+					<div class="div-carousel-item" style="opacity: 0"><a href=""><img src="img/轮播图 (2).jpg"
+								height="641px"></a></div>
+				</div>
+				<div class="div-carousel-focus">
+					<span class="active"></span>
+					<span class=""></span>
+					<span class=""></span>
+					<span class=""></span>
+					<span class=""></span>
+				</div>
+			</div>
+		</div>
+		<script>
+			var imgSum = 5
+			var index = 0
+			var prevIndex = imgSum - 1
+			var carouselImgList = document.querySelectorAll(".div-carousel-item")
+			var carouselSpan = document.querySelectorAll('.div-carousel-focus span')
+			var autoCarousel
+
+			function showImg(showIndex, hideIndex) {
+				for (let index = 0; index < carouselSpan.length; index++) {
+					carouselSpan[index].classList.remove("active")
+				}
+				carouselSpan[showIndex].classList.add("active")
+
+				carouselImgList[showIndex].style.opacity = '1'
+				carouselImgList[hideIndex].style.opacity = '0'
+			}
+
+			function startCarousel() {
+				autoCarousel = setInterval(function() {
+					prevIndex = index
+					index = (imgSum - 1 == index) ? 0 : index + 1
+					showImg(index, prevIndex)
+				}, 3000)
+			}
+
+			function initListener() {
+				carouselSpan.forEach(function(el, key) {
+					el.addEventListener("click", function(e) {
+						clearInterval(autoCarousel)
+						showImg(key, index)
+						index = key
+						startCarousel()
+					})
+				})
+			}
+
+			function init() {
+				initListener()
+				showImg(index, prevIndex)
+				startCarousel()
+			}
+			init()
+		</script>
+		<div class="nav">
+			<div class="navlist">
+				<div class="bibt11"><a href="">首页</a></div>
+				<div class="bibt11"><a href="公司简介.html">公司简介</a></div>
+				<div class="bibt11"><a href="商品列表/shlei/茶.html">产品列表</a></div>
+				<div class="bibt11"><a href="">业务详情</a>
+					<div class="navlist-drop1">
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+					</div>
+				</div>
+				<div class="bibt11"><a href="">设计团队</a>
+					<div class="navlist-drop1">
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+					</div>
+				</div>
+				<div class="bibt11"><a href="">未来展望</a>
+					<div class="navlist-drop1">
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+					</div>
+				</div>
+				<div class="bibt11"><a href="">联系我们</a>
+					<div class="navlist-drop1">
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+						<a href="">下拉框</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="d-center">
+			<div class="electric">
+				<h2><img src="img/logo111.jpg" width="60px" height="35px" />日用百货</h2>
+				<ul>
+					<li><a class="style-red" href="#" style="color: red;">热门</a></li>
+					<li><a href="#">酒水饮料</a></li>
+					<li><a href="#">洗护用品</a></li>
+					<li><a href="#">鲜食热食</a></li>
+					<li><a href="#">个护健康</a></li>
+					<li><a href="#">应季电器</a></li>
+					<li><a href="#">空气/净水</a></li>
+					<li><a href="#">功能饮料</a></li>
+					<li><a class="none-right-border" href="#">植物果汁</a></li>
+				</ul>
+			</div>
+
+			<div class="electric-column-1">
+				<div class="electric-text">
+					<div><a href="#">方便速食</a></div>
+					<div><a href="#">代理产品</a></div>
+				</div>
+				<div class="electric-text">
+					<div><a href="#">茶饮料</a></div>
+					<div><a href="#">白酒</a></div>
+				</div>
+				<div class="electric-text">
+					<div><a href="#">啤酒</a></div>
+					<div><a href="#">乳制品</a></div>
+				</div>
+				<img src="img/kkkl.jpg" width="100%" height="100%" />
+			</div>
+
+			<div class="electric-column-2">
+				<img src="img/尖叫.jpg" width="100%" height="100%" />
+				<ul>
+					<li class="pic-dot style-white"></li>
+					<li class="pic-dot"></li>
+					<li class="pic-dot"></li>
+				</ul>
+			</div>
+
+			<div class="electric-column-3">
+				<img src="img/张艺兴.jpg" width="100%" height="100%" />
+				<img src="img/王一博啤酒.jpg" width="100%" height="100%" />
+			</div>
+
+			<div class="electric-column-4">
+				<img src="img/红牛.jpg" width="100%" height="100%" />
+				<img src="img/金典纯牛奶.jpeg" width="100%" height="100%" />
+			</div>
+
+			<div class="electric-column-5">
+				<img src="img/王俊凯汤达人.jpg" width="100%" height="100%" />
+				<img src="img/王俊凯汤达人.png" width="100%" height="100%" />
+			</div>
+		</div>
+		<div class="d-center">
+			<div class="electric">
+				<h2><img src="img/logo111.jpg" width="60px" height="35px" />生活用品</h2>
+				<ul>
+					<li><a class="style-red" href="#" style="color: red;">热门</a></li>
+					<li><a href="#">饼干糕点</a></li>
+					<li><a href="#">厨房调味</a></li>
+					<li><a href="#">生活用纸</a></li>
+					<li><a href="#">家庭清洁</a></li>
+					<li><a href="#">糖果巧克力</a></li>
+					<li><a href="#">餐饮专区</a></li>
+					<li><a href="#">肉类零食</a></li>
+					<li><a class="none-right-border" href="#">驱蚊专区</a></li>
+				</ul>
+			</div>
+
+			<div class="electric-column-1">
+				<div class="electric-text">
+					<div><a href="#">日用百货</a></div>
+					<div><a href="#">家庭用品</a></div>
+				</div>
+				<div class="electric-text">
+					<div><a href="#">饮用水</a></div>
+					<div><a href="#">其他饮料</a></div>
+				</div>
+				<div class="electric-text">
+					<div><a href="#">洗护产品</a></div>
+					<div><a href="#">清洁护肤</a></div>
+				</div>
+				<img src="img/雪碧.jpg" width="100%" height="100%" />
+			</div>
+
+			<div class="electric-column-2">
+				<img src="img/电解.jpg" width="100%" height="100%" />
+				<ul>
+					<li class="pic-dot style-white"></li>
+					<li class="pic-dot"></li>
+					<li class="pic-dot"></li>
+				</ul>
+			</div>
+
+			<div class="electric-column-3">
+				<img src="img/肖战.jpg" width="100%" height="100%" />
+				<img src="img/水c.png" width="100%" height="100%" />
+			</div>
+
+			<div class="electric-column-4">
+				<img src="img/1元气森林.png" width="100%" height="100%" />
+				<img src="img/红星.jpg" width="100%" height="100%" />
+			</div>
+
+			<div class="electric-column-5">
+				<img src="img/百岁山.jpg" width="100%" height="100%" />
+				<img src="img/百事可乐.jpg" width="100%" height="100%" />
+			</div>
+			<div class="readme-div">
+				<div class="d-center">
+					<ul>
+						<li><a href="#">关于我们 </a>|</li>
+						<li><a href="#">联系我们 </a>|</li>
+						<li><a href="#">联系客服 </a>|</li>
+						<li><a href="#">商家入驻 </a>|</li>
+						<li><a href="#">营销中心 </a>|</li>
+						<li><a href="#">手机壹橙 </a>|</li>
+						<li><a href="#">友情链接 </a>|</li>
+						<li><a href="#">销售联盟 </a>|</li>
+						<li><a href="#">壹橙社区 </a>|</li>
+						<li><a href="#">English Site </a>|</li>
+						<li><a href="#">Contact U</a></li>
+					</ul>
+					<p>地址：贵州省贵阳市南明区水口寺街道办事处 邮编：100096 电话：400-618-4000 传真：010-82935100 邮箱: zhanghj+itcast.cn </p>
+					<p>版权属于网页设计第五小组所有</p>
+				</div>
+			</div>
+	</body>
+</html>
